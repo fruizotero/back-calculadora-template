@@ -1,0 +1,10 @@
+name: Actividad DAW
+on: workflow_dispatch
+jobs:
+    test:
+       runs-on: ubuntu-latest
+       steps:
+          - name: Copiar código
+            uses: actions/checkout@v4
+          - name:  Ejecutar tests
+            run: pytest

@@ -35,3 +35,4 @@ async def multiplicar(num1: int, num2: int):
 @app.get("/dividir/")
 async def dividir(num1: int, num2: int):
     return {"resultado": calc.dividir(num1, num2)}
+
