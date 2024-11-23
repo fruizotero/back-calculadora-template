@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 Para iniciar la aplicación, utiliza el siguiente comando:
 ```bash
-uvicorn main:app --reload --port 8001
+fastapi dev main.py --port 8000
 ```
 
 ---
@@ -77,7 +77,7 @@ docker images
 
 Luego, ejecuta:
 ```bash
-docker run -d -p 8001:8000 back-calculadora-daw
+docker run -d -p 8000:8000 back-calculadora-daw
 ```
 
 ---
