@@ -6,5 +6,8 @@ jobs:
        steps:
           - name: Copiar código
             uses: actions/checkout@v4
-          - name:  Ejecutar tests
+          - name:  Ejecutar requerimientos
+            run: pip install -r requirements.txt
+          - name: Ejecutart tests
             run: pytest
+
