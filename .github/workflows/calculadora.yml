@@ -47,11 +47,11 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.DAW_CALCULADORA_TOKEN }}
         -
-          name: Build image
-          run: docker build . --tag ghcr.io/fruizotero/back-calculadora-template:latest
-        -
-          name: Push image a github packages
-          run: docker push ghcr.io/fruizotero/back-calculadora-template:latest
+          name: Build image y pushear a Github Packages
+          uses: docker/build-push-action@v6
+          with:
+            push: true
+            tags: ghcr.io/fruizotero/back-calculadora-template:latest
           
     
 
