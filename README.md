@@ -114,3 +114,44 @@ Para obtener el código del repositorio, generar una imagen Docker y subirla a D
    ![imagen 06](assets/github_action_06.png)
 
 Con estas configuraciones, tu flujo de trabajo en GitHub Actions estará listo para construir y gestionar imágenes Docker automáticamente.
+
+## Configuración para subir imágenes a GitHub Packages
+
+### Documentación y Actions utilizados
+
+1. [Action: Build and Push Docker Images](https://github.com/marketplace/actions/build-and-push-docker-images)
+2. [Action: Docker Login to GitHub Container Registry](https://github.com/marketplace/actions/docker-login)
+3. [Documentación sobre el Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticarse-en-el-container-registry)
+4. [Workflow de acceso al registro con tokens](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token)
+
+### Obtención del Token con permisos y creación de una variable secreta
+
+1. Se necesita un token con los permisos necesarios para subir el package. Para obtenerlo:
+   - Ve a tu perfil en **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)**.
+2. Al crear el token, asegúrate de habilitar los permisos para **workflow** y **packages**.
+3. Una vez generado el token:
+   - Ve a tu repositorio.
+   - Entra a la configuración de **Secrets and variables**.
+   - Crea un nuevo secret donde almacenarás el token para su uso en el workflow.
+
+### Vincular la imagen con el repositorio utilizando el Dockerfile
+
+Añade la siguiente etiqueta en tu archivo `Dockerfile` para asociar la imagen con tu repositorio:
+
+```docker
+LABEL org.opencontainers.image.source https://github.com/<username>/<repository-name>
+```
+
+### Cambiar el package a público
+
+Si el workflow ha subido correctamente la imagen, es posible que necesites hacer el package público. Para ello:
+
+1. Ve a tu perfil en GitHub.
+2. Dirígete a la sección de **Packages**.
+3. Busca el nombre del package subido.
+4. Cambia la configuración de **privado** a **público**.
+
+### Notas adicionales
+
+- Asegúrate de que tu workflow tiene configuradas las acciones necesarias para autenticarte y realizar el push al registro.
+- Revisa los logs del workflow en caso de errores para identificar configuraciones faltantes.

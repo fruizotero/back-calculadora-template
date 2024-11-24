@@ -1,7 +1,7 @@
 name: Actividad DAW
 on: push
 jobs:
-    test:
+    test-and-lint:
        runs-on: ubuntu-latest
        steps:
           - 
