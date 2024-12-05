@@ -1,6 +1,16 @@
 name: Actividad DAW
 on: push
 jobs:
+
+    test-job:
+      runs-on: ubuntu-latest
+      steps:
+         - 
+           name: Copiar código
+           uses: actions/checkout@v4
+
+         - name: listar 
+           run: ls -a
     test-and-lint:
        runs-on: ubuntu-latest
        steps:
